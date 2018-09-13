@@ -11,7 +11,11 @@
 |
 
 */
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'AcceuilController@index');
 
+Route::get('acceuil', 'AcceuilController@index');
+
+Route::get('form', 'PostController@form');
+Route::post('form', 'PostController@poster');
+
+Route::get('api', 'AcceuilController@api');

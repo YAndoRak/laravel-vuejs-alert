@@ -1,7 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: android
- * Date: 12/09/2018
- * Time: 20:27
- */
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
+{
+    protected $fillable=['titre', 'lieu', 'commune', 'date', 'description', 'online'];
+}

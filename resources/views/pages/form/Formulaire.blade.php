@@ -1,7 +1,7 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: android
- * Date: 12/09/2018
- * Time: 20:22
- */
+@extends('default')
+
+@section('content')
+    <div class="container" id="Vueapp">
+        <form-component></form-component>
+    </div>
+@stop

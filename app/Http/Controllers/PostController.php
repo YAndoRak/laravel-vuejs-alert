@@ -1,7 +1,17 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: android
- * Date: 12/09/2018
- * Time: 20:26
- */
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Post;
+
+class PostController extends Controller
+{
+    public function form(){
+        return view('pages.form.formulaire');
+    }
+    public function poster(Request $request){
+        #$post = Post::create($request->all());
+        $post= Post::create($request->all());
+    }
+}

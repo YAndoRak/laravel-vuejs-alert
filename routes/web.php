@@ -19,3 +19,7 @@ Route::get('form', 'PostController@form');
 Route::post('form', 'PostController@poster');
 
 Route::get('api', 'AcceuilController@api');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

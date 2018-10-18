@@ -14,12 +14,12 @@
 
                     </div>
 
-                    <!--<div  class="card-footer border-info collapse">
+                    <div  class="card-footer border-info collapse">
                         <p class="card-text">
                         <p>{{post.description}}</p>
                         <a href="#">En savoir plus</a>
                         </p>
-                    </div>-->
+                    </div>
 
 
                 </div>
@@ -57,7 +57,20 @@
         },
         mounted(){
             axios.get('api').then((response)=>{
-
+                $(function () {
+                    let expand=true;
+                    $('.expand').click(function () {
+                        $(this).parent().parent().find('.collapse').collapse('toggle');
+                        if (expand){
+                            $(this).text('Fermer');
+                            expand=false;
+                        }
+                        else{
+                            $(this).text('Plus');
+                            expand=true;
+                        }
+                    });
+                });
                 if(response.data!=''){
                     this.plein=true
                     this.posts=response.data

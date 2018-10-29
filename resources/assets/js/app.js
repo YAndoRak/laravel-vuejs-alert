@@ -8,8 +8,23 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+
+import article from './components/ArticleComponent.vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
+
+const routes = [
+    {
+        path: '/post/:id',
+        component: article,
+        name:'article'
+    }
+]
+
+const router = new VueRouter({
+    mode: 'history',
+    routes
+})
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -19,5 +34,6 @@ Vue.component('form-component', require('./components/FormComponent.vue'));
 Vue.component('acceuil-component', require('./components/AcceuilComponent.vue'));
 
 const app = new Vue({
-    el: '#Vueapp'
+    el: '#Vueapp',
+    router
 });

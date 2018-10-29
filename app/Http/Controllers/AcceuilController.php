@@ -20,4 +20,8 @@ class AcceuilController extends Controller
     public function detail(){
         return view('pages.article');
     }
+    public function show($id){
+        $article = Post::public()->findOrFail($id);
+        return (json_encode($article));
+    }
 }

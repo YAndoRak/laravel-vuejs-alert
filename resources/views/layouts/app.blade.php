@@ -33,10 +33,10 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="acceuil">Acceuil</a>
+                        <a class="nav-link" href="/acceuil">Acceuil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="form">Signaler</a>
+                        <a class="nav-link" href="/form">Signaler</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">A propos</a>

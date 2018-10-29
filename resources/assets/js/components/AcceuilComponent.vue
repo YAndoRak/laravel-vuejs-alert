@@ -17,8 +17,8 @@
                     <div  class="card-footer border-info collapse">
                         <p class="card-text">
                         <p>{{post.description}}</p>
-                        <a href="#">En savoir plus</a>
-                        </p>
+                        <a :href="'/post/'+post.id">En savoir plus</a>
+
                     </div>
 
 
@@ -29,7 +29,7 @@
                         <small class="text-muted">
                             {{post.date}}
                         </small>
-                        <a href="#">En savoir plus</a>
+                        <a :href="'/post/'+post.id">En savoir plus</a>
                     </p>
 
                     <button class="btn btn-primary btn-group-sm expand">Plus</button>

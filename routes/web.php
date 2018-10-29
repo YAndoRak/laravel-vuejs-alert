@@ -23,3 +23,4 @@ Route::get('api', 'AcceuilController@api');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('post/{id}', 'AcceuilController@detail');

@@ -17,4 +17,7 @@ class AcceuilController extends Controller
        $post= Post::where('online', 1)->get();
        return (json_encode($post));
     }
+    public function detail(){
+        return view('pages.article');
+    }
 }

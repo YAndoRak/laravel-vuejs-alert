@@ -90,6 +90,18 @@
                 config: {
                     placeholderText:"Veuillez decrir ici les details de l'incident",
                     height: 150,
+                    fileUpload: false,
+                    toolbarSticky: false,
+                    enter: $.FroalaEditor.ENTER_DIV,
+                    quickInsertButtons: ['embedly', 'table', 'ul', 'ol', 'hr'],
+
+                    toolbarButtons: ['bold', 'italic', 'underline',
+                        'strikeThrough', 'subscript', 'superscript',
+                        '|', 'fontFamily', 'fontSize', 'color', 'inlineStyle',
+                        'paragraphStyle', '|', '-','insertTable','specialCharacters','selectAll','help', 'undo', 'redo',
+                        '|', 'outdent', 'indent', '|','insertHR', 'html', '|',
+                        'paragraphFormat', 'align', 'formatOL',
+                        'formatUL' ],
                     events: {
                         'froalaEditor.initialized': function () {
                             console.log('initialized')

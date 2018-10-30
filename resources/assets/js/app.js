@@ -7,11 +7,21 @@
 
 require('./bootstrap');
 
+// Require Froala Editor js file.
+require('froala-editor/js/froala_editor.pkgd.min')
+
+// Require Froala Editor css files.
+require('froala-editor/css/froala_editor.pkgd.min.css')
+require('font-awesome/css/font-awesome.css')
+require('froala-editor/css/froala_style.min.css')
+
 window.Vue = require('vue');
 
 import article from './components/ArticleComponent.vue'
+import VueFroala from 'vue-froala-wysiwyg'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
+Vue.use(VueFroala)
 
 const routes = [
     {

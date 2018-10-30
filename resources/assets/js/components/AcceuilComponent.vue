@@ -9,14 +9,13 @@
                     <img class="card-img-top" src="/imgs/img.jpeg" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">{{post.titre}}</h5>
-                        <p class="card-text">{{post.description}}</p>
 
 
                     </div>
 
                     <div  class="card-footer border-info collapse">
-                        <p class="card-text">
-                        <p>{{post.description}}</p>
+                        <p class="card-text"></p>
+                        <span v-html="post.description"></span>
                         <a :href="'/post/'+post.id">En savoir plus</a>
 
                     </div>

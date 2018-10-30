@@ -66,15 +66,15 @@
 
             <div class="form-group">
                 <label for="description">Description :</label>
-                <textarea class="form-control rounded-0" name="description" rows="6" placeholder="Decriver en details ce qui s'est passé" required v-model="description"></textarea>
+                <froala :tag="'textarea'" :config="config" v-model="description"></froala>
 
+            </div>
+            <div class="form-group">
                 <div class="custom-control custom-checkbox mt-2">
                     <input type="checkbox" class="custom-control-input" id="public" name="public" value="1" checked v-model="online">
                     <label class="custom-control-label" for="public">Mettre en public ?</label>
                 </div>
-
             </div>
-
 
             <button class="btn btn-primary btn-block btn-lg" @click="envoyer">Je veux soumettre</button>
 
@@ -87,6 +87,15 @@
     export default {
         data(){
             return {
+                config: {
+                    placeholderText:"Veuillez decrir ici les details de l'incident",
+                    height: 150,
+                    events: {
+                        'froalaEditor.initialized': function () {
+                            console.log('initialized')
+                        }
+                    }
+                },
                 titre:"",
                 lieu:"",
                 commune:"",

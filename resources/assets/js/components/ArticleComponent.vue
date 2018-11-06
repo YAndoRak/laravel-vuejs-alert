@@ -2,7 +2,7 @@
     <div class="contenu">
         <h5>{{articles.titre}}</h5>
         <p>{{articles.id}}</p>
-        <p>{{articles.description}}</p>
+        <span v-html="articles.description"></span>
     </div>
 </template>
 <script>

@@ -2,7 +2,7 @@
     <div class="contenu">
         <h5>{{articles.titre}}</h5>
         <p>{{articles.id}}</p>
-        <span v-html="articles.description"></span>
+        <froalaView v-model="articles.description"></froalaView>
     </div>
 </template>
 <script>

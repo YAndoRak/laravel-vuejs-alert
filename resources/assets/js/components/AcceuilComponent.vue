@@ -15,7 +15,7 @@
 
                     <div  class="card-footer border-info collapse">
                         <p class="card-text"></p>
-                        <span v-html="post.description"></span>
+                        <froalaView v-model="post.description"></froalaView>
                         <a :href="'/post/'+post.id">En savoir plus</a>
 
                     </div>

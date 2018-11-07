@@ -90,18 +90,18 @@
                 config: {
                     placeholderText:"Veuillez decrir ici les details de l'incident",
                     height: 150,
-                    fileUpload: false,
                     toolbarSticky: false,
                     enter: $.FroalaEditor.ENTER_DIV,
+                    tabSpaces: 4,
                     quickInsertButtons: ['embedly', 'table', 'ul', 'ol', 'hr'],
-
-                    toolbarButtons: ['bold', 'italic', 'underline',
-                        'strikeThrough', 'subscript', 'superscript',
-                        '|', 'fontFamily', 'fontSize', 'color', 'inlineStyle',
-                        'paragraphStyle', '|', '-','insertTable','specialCharacters','selectAll','help', 'undo', 'redo',
-                        '|', 'outdent', 'indent', '|','insertHR', 'html', '|',
-                        'paragraphFormat', 'align', 'formatOL',
-                        'formatUL' ],
+                    imageAllowedTypes: ['jpeg', 'jpg', 'png', 'bmp'],
+                    imageInsertButtons:['imageBack', '|', 'imageUpload', 'imageByURL'],
+                    toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript',
+                        'superscript', '|', 'fontFamily', 'fontSize', 'color', 'inlineStyle',
+                        'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL','formatUL', '-',
+                        'insertTable', '|', 'undo', 'redo', 'insertHR', 'emoticons','fontAwesome','selectAll', '|',
+                        'html', '|','outdent', 'indent', 'quote','insertImage', 'insertVideo','|', 'fullscreen',
+                        'getPDF','clearFormatting','specialCharacters','print','help' ],
                     events: {
                         'froalaEditor.initialized': function () {
                             console.log('initialized')

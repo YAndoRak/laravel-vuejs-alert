@@ -18,6 +18,7 @@ require('froala-editor/css/froala_style.min.css')
 window.Vue = require('vue');
 
 import article from './components/ArticleComponent.vue'
+import edition from './components/EditComponent.vue'
 import VueFroala from 'vue-froala-wysiwyg'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
@@ -28,6 +29,11 @@ const routes = [
         path: '/post/:id',
         component: article,
         name:'article'
+    },
+    {
+        path: '/post/edit/:id',
+        component: edition,
+        name:'edition'
     }
 ]
 

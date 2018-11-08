@@ -29,6 +29,7 @@
                             {{post.date}}
                         </small>
                         <a :href="'/post/'+post.id">En savoir plus</a>
+                        <a :href="'/post/edit/'+post.id">Editer ce post</a>
                     </p>
 
                     <button class="btn btn-primary btn-group-sm expand">Plus</button>

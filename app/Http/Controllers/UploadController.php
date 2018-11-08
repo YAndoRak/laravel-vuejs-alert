@@ -7,7 +7,7 @@ class UploadController extends Controller
     public function index(){
         try {
             // File Route.
-            $fileRoute = "/uploads/images";
+            $fileRoute = "/uploads/images/";
 
             $fieldname = "file";
 

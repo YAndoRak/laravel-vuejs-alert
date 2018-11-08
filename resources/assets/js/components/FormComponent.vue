@@ -93,6 +93,17 @@
                     toolbarSticky: false,
                     enter: $.FroalaEditor.ENTER_DIV,
                     tabSpaces: 4,
+                    //En tete
+                    requestHeaders: {
+                        ['X-Requested-With']: 'XMLHttpRequest',
+                        ['X-CSRF-TOKEN']:document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+
+                    },
+                    requestWithCredentials: true,
+                    imageUploadURL: '/api/upload_image',
+                    imageUploadParam: 'file',
+                    imageUploadMethod: 'post',
+
                     quickInsertButtons: ['embedly', 'table', 'ul', 'ol', 'hr'],
                     imageAllowedTypes: ['jpeg', 'jpg', 'png', 'bmp'],
                     videoAllowedTypes: ['webm', 'mp4', 'ogg'],

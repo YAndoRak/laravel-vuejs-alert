@@ -4,10 +4,30 @@ namespace App\Http\Controllers;
 
 class UploadController extends Controller
 {
-    public function index(){
+    public function UploadVideo(){
+        $fileRoute = "/uploads/videos/";
+        $allowedExts = array("mp4", "webm", "ogg");
+        $allowedMimeTypes = array("video/mp4", "video/webm", "video/ogg");
+        $this->Uploading($fileRoute, $allowedExts, $allowedMimeTypes);
+    }
+
+    public function UploadImage(){
+        $fileRoute = "/uploads/images/";
+        $allowedExts = array("gif", "jpeg", "jpg", "png", "svg", "blob");
+        $allowedMimeTypes = array("image/gif", "image/jpeg", "image/pjpeg", "image/x-png", "image/png", "image/svg+xml");
+        $this->Uploading($fileRoute, $allowedExts, $allowedMimeTypes);
+    }
+
+    public function UploadFile(){
+        $fileRoute = "/uploads/files/";
+        $allowedExts = array("txt", "pdf", "doc","json","html");
+        $allowedMimeTypes = array("text/plain", "application/msword", "application/x-pdf", "application/pdf", "application/json","text/html");
+        $this->Uploading($fileRoute, $allowedExts, $allowedMimeTypes);
+    }
+    private function Uploading($fileRoute, $allowedExts, $allowedMimeTypes){
         try {
-            // File Route.
-            $fileRoute = "/uploads/images/";
+            $fileRoute;
+            //(File)(Route)
 
             $fieldname = "file";
 
@@ -28,10 +48,10 @@ class UploadController extends Controller
             $extension = end($filename);
 
             // Allowed extensions.
-            $allowedExts = array("gif", "jpeg", "jpg", "png", "svg", "blob");
+            $allowedExts;
 
             // Allowed mime types.
-            $allowedMimeTypes = array("image/gif", "image/jpeg", "image/pjpeg", "image/x-png", "image/png", "image/svg+xml");
+            $allowedMimeTypes;
 
             // Validate image.
             if (!in_array(strtolower($mimeType), $allowedMimeTypes) || !in_array(strtolower($extension), $allowedExts)) {

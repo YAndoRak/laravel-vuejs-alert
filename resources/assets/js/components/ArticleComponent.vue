@@ -1,5 +1,5 @@
 <template>
-    <div class="contenu">
+    <div class="container">
         <h5>{{articles.titre}}</h5>
         <p>{{articles.id}}</p>
         <froalaView v-model="articles.description"></froalaView>

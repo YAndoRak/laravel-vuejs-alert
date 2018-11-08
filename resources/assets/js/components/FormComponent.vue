@@ -95,6 +95,7 @@
                     tabSpaces: 4,
                     quickInsertButtons: ['embedly', 'table', 'ul', 'ol', 'hr'],
                     imageAllowedTypes: ['jpeg', 'jpg', 'png', 'bmp'],
+                    videoAllowedTypes: ['webm', 'mp4', 'ogg'],
                     imageInsertButtons:['imageBack', '|', 'imageUpload', 'imageByURL'],
                     toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript',
                         'superscript', '|', 'fontFamily', 'fontSize', 'color', 'inlineStyle',

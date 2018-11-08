@@ -15,4 +15,11 @@ class PostController extends Controller
         #$post = Post::create($request->all());
         $post= Post::create($request->all());
     }
+    public function edit(){
+        return view('pages.article');
+    }
+    public function update($id, Request $request){
+        $post= Post::findOrFail($id);
+        $post->update($request->all());
+    }
 }

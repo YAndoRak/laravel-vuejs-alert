@@ -24,3 +24,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('post/{id}', 'AcceuilController@detail');
+Route::get('post/edit/{id}', 'PostController@edit')->name('post.edition');

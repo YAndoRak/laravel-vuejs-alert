@@ -104,6 +104,25 @@
                     imageUploadParam: 'file',
                     imageUploadMethod: 'post',
 
+                    // Set the video upload URL.
+                    videoUploadURL: 'api/upload_video',
+                    // Set request type.
+                    videoUploadMethod: 'POST',
+                    // Set max video size to 50MB.
+                    videoMaxSize: 50 * 1024 * 1024,
+
+                    // Set the file upload URL.
+                    fileUploadURL: 'api/upload_file',
+
+                    // Set request type.
+                    fileUploadMethod: 'POST',
+
+                    // Set max file size to 20MB.
+                    fileMaxSize: 20 * 1024 * 1024,
+
+                    // Allow to upload any file.
+                    fileAllowedTypes: ['*'],
+
                     quickInsertButtons: ['embedly', 'table', 'ul', 'ol', 'hr'],
                     imageAllowedTypes: ['jpeg', 'jpg', 'png', 'bmp'],
                     videoAllowedTypes: ['webm', 'mp4', 'ogg'],
@@ -112,7 +131,7 @@
                         'superscript', '|', 'fontFamily', 'fontSize', 'color', 'inlineStyle',
                         'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL','formatUL', '-',
                         'insertTable', '|', 'undo', 'redo', 'insertHR', 'emoticons','fontAwesome','selectAll', '|',
-                        'html', '|','outdent', 'indent', 'quote','insertImage', 'insertVideo','|', 'fullscreen',
+                        'html', '|','outdent', 'indent', 'quote','insertFile','insertImage', 'insertVideo','|', 'fullscreen',
                         'getPDF','clearFormatting','specialCharacters','print','help' ],
                     events: {
                         'froalaEditor.initialized': function () {

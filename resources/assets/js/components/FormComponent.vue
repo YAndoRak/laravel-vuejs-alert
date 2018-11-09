@@ -33,32 +33,8 @@
             <!--Ici commence date -->
             <label>Date de decouverte de l'incident :</label>
             <div class="input-group mb-3" >
-                <select class="custom-select" v-model="jour">
-                    <option disabled value="">Jour</option>
-                    <option v-for="day in 31">{{day}}</option>
-                </select>
-                <select class="custom-select" v-model="mois">
-                    <option disabled value="">Mois</option>
-                    <option value="01">Janvier</option>
-                    <option value="02">Fevrier</option>
-                    <option value="03">Mars</option>
-                    <option value="04">Avril</option>
-                    <option value="05">Mai</option>
-                    <option value="06">Juin</option>
-                    <option value="07">Juin</option>
-                    <option value="08">Aout</option>
-                    <option value="09">Septembre</option>
-                    <option value="10">Octobre</option>
-                    <option value="11">Novembre</option>
-                    <option value="12">Decembre</option>
-                </select>
-
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Annee</span>
-                </div>
-                <input type="text" class="form-control" placeholder="ex: 2018" v-model="annee">
-
-
+                <datepicker :bootstrap-styling="true" calendar-button="true" placeholder="ex: 17 Nov 2018" calendar-button-icon="fa fa-calendar" v-model="date">
+                </datepicker>
             </div>
 
 
@@ -84,7 +60,11 @@
 </template>
 
 <script>
+    import Datepicker from 'vuejs-datepicker';
     export default {
+        components: {
+            Datepicker
+        },
         data(){
             return {
                 config: {
@@ -144,10 +124,6 @@
                 commune:"",
                 date:"",
                 description:"",
-                annee:"",
-                jour:'',
-                mois:'',
-                day:'',
                 online:1,
                 success:false
 
@@ -159,7 +135,7 @@
                     titre:this.titre,
                     lieu:this.lieu,
                     commune:this.commune,
-                    date:this.jour+this.mois+this.annee,
+                    date:this.date,
                     description:this.description,
                     online:this.online
                 }).then((response)=>{

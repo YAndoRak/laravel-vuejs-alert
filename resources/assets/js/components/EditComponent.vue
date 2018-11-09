@@ -33,14 +33,9 @@
             <!--Ici commence date -->
             <label>Date de decouverte de l'incident :</label>
             <div class="input-group mb-3" >
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Annee</span>
-                </div>
-                <input type="text" class="form-control" v-model="articles.date">
-
-
+                <datepicker :bootstrap-styling="true" calendar-button="true" placeholder="ex: 17 Nov 2018" calendar-button-icon="fa fa-calendar" v-model="articles.date">
+                </datepicker>
             </div>
-
 
             <!-- Fin date -->
 
@@ -63,7 +58,11 @@
     </div>
 </template>
 <script>
+    import Datepicker from 'vuejs-datepicker';
     export default {
+        components: {
+            Datepicker
+        },
         data(){
             return {config: {
                     height: 150,

@@ -26,7 +26,8 @@
 
                     <p class="card-text">
                         <small class="text-muted">
-                            {{post.date}}
+                            {{post.date |moment("dddd, MMMM Do YYYY")}}
+
                         </small>
                         <a :href="'/post/'+post.id">En savoir plus</a>
                         <a :href="'/post/edit/'+post.id">Editer ce post</a>

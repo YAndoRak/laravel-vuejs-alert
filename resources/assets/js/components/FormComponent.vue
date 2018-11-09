@@ -5,7 +5,7 @@
                 <h4 class="alert-heading">Felecitation!</h4>
                 <p>Votre message a ete bien envoyer.</p>
                 <hr>
-                <p class="mb-0">Merci pour votre participation, pour retourner a la page d'acceuil <a href="acceuil">Cliquer ici</a></p>
+                <p class="mb-0">Merci pour votre participation, pour retourner a la page d'acceuil <a href="/acceuil">Cliquer ici</a></p>
             </div>
         </div>
 
@@ -33,7 +33,7 @@
             <!--Ici commence date -->
             <label>Date de decouverte de l'incident :</label>
             <div class="input-group mb-3" >
-                <datepicker :bootstrap-styling="true" calendar-button="true" placeholder="ex: 17 Nov 2018" calendar-button-icon="fa fa-calendar" v-model="date">
+                <datepicker :bootstrap-styling="true" calendar-button='1' placeholder="ex: 17 Nov 2018" calendar-button-icon="fa fa-calendar" v-model="date">
                 </datepicker>
             </div>
 
@@ -64,6 +64,13 @@
     export default {
         components: {
             Datepicker
+        },
+        props: {
+            format: [String, Function],
+            placeholder: String,
+            calendarButtonIcon: String,
+            required: Boolean,
+            bootstrapStyling: Boolean,
         },
         data(){
             return {

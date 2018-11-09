@@ -3,9 +3,9 @@
         <div class="container mt-4" v-if="success">
             <div class="alert alert-success" role="alert">
                 <h4 class="alert-heading">Felecitation!</h4>
-                <p>Votre message a ete bien envoyer.</p>
+                <p>Modification reussie.</p>
                 <hr>
-                <p class="mb-0">Merci pour votre participation, pour retourner a la page d'acceuil <a href="acceuil">Cliquer ici</a></p>
+                <p class="mb-0">Merci pour votre participation, pour retourner a la page d'acceuil <a href="/acceuil">Cliquer ici</a></p>
             </div>
         </div>
 
@@ -14,11 +14,11 @@
 
             <div class="form-group">
                 <label for="titre">Sujet de votre declaration :</label>
-                <input type="text" class="form-control" name="titre" required v-model="articles.titre">
+                <input type="text" class="form-control" name="titre" required v-model.lazy="articles.titre">
             </div>
             <div class="form-group">
                 <label for="lieu">Lieu de l'incident : </label>
-                <select class="browser-default custom-select mb-2" name="lieu" v-model="articles.lieu">
+                <select class="browser-default custom-select mb-2" name="lieu" v-model.lazy="articles.lieu">
                     <option value="" disabled>Choisissez une ville</option>
                     <option>Tana</option>
                     <option>Majunga</option>
@@ -28,12 +28,17 @@
             </div>
             <div class="form-group">
                 <label for="commune">La commune où l'incident s'est produite :</label>
-                <input type="text" class="form-control" name="commune" required v-model="articles.commune">
+                <input type="text" class="form-control" name="commune" required v-model.lazy="articles.commune">
             </div>
             <!--Ici commence date -->
             <label>Date de decouverte de l'incident :</label>
             <div class="input-group mb-3" >
-                <datepicker :bootstrap-styling="true" calendar-button="true" placeholder="ex: 17 Nov 2018" calendar-button-icon="fa fa-calendar" v-model="articles.date">
+                <datepicker
+                        :bootstrap-styling="true"
+                        :calendarButton="true"
+                        placeholder="ex: 17 Nov 2018"
+                        calendar-button-icon="fa fa-calendar"
+                        v-model="articles.date">
                 </datepicker>
             </div>
 
@@ -41,12 +46,12 @@
 
             <div class="form-group">
                 <label for="description">Description :</label>
-                <froala :tag="'textarea'" :config="config" v-model="articles.description"></froala>
+                <froala :tag="'textarea'" :config="config" v-model.lazy="articles.description"></froala>
 
             </div>
             <div class="form-group">
                 <div class="custom-control custom-checkbox mt-2">
-                    <input type="checkbox" class="custom-control-input" id="public" name="public" value="1" checked v-model="articles.online">
+                    <input type="checkbox" class="custom-control-input" id="public" name="public" value="1" checked v-model.lazy="articles.online">
                     <label class="custom-control-label" for="public">Mettre en public ?</label>
                 </div>
             </div>
@@ -110,7 +115,11 @@
                         'html', '|','outdent', 'indent', 'quote','insertFile','insertImage', 'insertVideo','|', 'fullscreen',
                         'getPDF','clearFormatting','specialCharacters','print','help' ],
                 },
-                articles:[]
+                articles:[],
+                success:false,
+                props:{
+                    calendarButton:Boolean
+                }
             }
         },
         mounted(){
@@ -130,12 +139,12 @@
                     titre:this.articles.titre,
                     lieu:this.articles.lieu,
                     commune:this.articles.commune,
-                    date:this.articles.date,
+                    date:this.articles.date,//this.$moment(this.articles.date).format('MMMM Do YYYY')
                     description:this.articles.description,
                     online:this.articles.online
                 }).then((response)=>{
                     this.success=true;
-                    window.location = '/acceuil';
+                    //window.location = '/acceuil';
                 }).catch(()=>{
                     console.log('error')
                 })

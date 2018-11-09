@@ -12,8 +12,7 @@ class PostController extends Controller
         return view('pages.form.formulaire');
     }
     public function poster(Request $request){
-        #$post = Post::create($request->all());
-        $post= Post::create($request->all());
+        Post::create($request->all());
     }
     public function edit(){
         return view('pages.article');

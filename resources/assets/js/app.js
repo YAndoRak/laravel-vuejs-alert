@@ -21,6 +21,8 @@ import article from './components/ArticleComponent.vue'
 import edition from './components/EditComponent.vue'
 import VueFroala from 'vue-froala-wysiwyg'
 import VueRouter from 'vue-router'
+import Vuemoment from 'vue-moment'
+Vue.use(Vuemoment)
 Vue.use(VueRouter)
 Vue.use(VueFroala)
 

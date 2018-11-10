@@ -69,7 +69,15 @@
             Datepicker
         },
         data(){
-            return {config: {
+            return {
+                config: {
+                    events: {
+                        'froalaEditor.image.beforeRemove': function () {
+                            axios.post('/api/edit/deleteImage', {
+                                url:document.querySelector('img').getAttribute('src')
+                            })
+                        }
+                    },
                     height: 150,
                     toolbarSticky: false,
                     enter: $.FroalaEditor.ENTER_DIV,

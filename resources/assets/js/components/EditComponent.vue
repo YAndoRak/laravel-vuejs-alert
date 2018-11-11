@@ -57,7 +57,6 @@
             </div>
 
             <button class="btn btn-primary btn-block btn-lg" @click="envoyer">Je veux editer</button>
-
         </div>
 
     </div>
@@ -74,7 +73,8 @@
                     events: {
                         'froalaEditor.image.beforeRemove': function () {
                             axios.post('/api/edit/deleteImage', {
-                                url:document.querySelector('img').getAttribute('src')
+                                src:document.querySelector('img').getAttribute('src'),
+                                type:'images/'
                             })
                         }
                     },

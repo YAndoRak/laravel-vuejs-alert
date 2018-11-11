@@ -92,14 +92,14 @@
                     imageUploadMethod: 'post',
 
                     // Set the video upload URL.
-                    videoUploadURL: 'api/upload_video',
+                    videoUploadURL: '/api/upload_video',
                     // Set request type.
                     videoUploadMethod: 'POST',
                     // Set max video size to 50MB.
                     videoMaxSize: 50 * 1024 * 1024,
 
                     // Set the file upload URL.
-                    fileUploadURL: 'api/upload_file',
+                    fileUploadURL: '/api/upload_file',
 
                     // Set request type.
                     fileUploadMethod: 'POST',

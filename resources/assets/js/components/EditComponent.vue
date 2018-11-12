@@ -136,21 +136,18 @@
                 if(response.data!=''){
                     this.articles=response.data
                 }
-                console.log('success')
-            }).catch(()=>{
-                console.log('error')
             })
         },
         methods:{
             envoyer(){
-                axios.post('/api/post/edit/'+this.$route.params.id, {
+                axios.put('/api/post/edit/'+this.$route.params.id, {
                     titre:this.articles.titre,
                     lieu:this.articles.lieu,
                     commune:this.articles.commune,
                     date:this.articles.date,//this.$moment(this.articles.date).format('MMMM Do YYYY')
                     description:this.articles.description,
                     online:this.articles.online
-                }).then((response)=>{
+                }).then(()=>{
                     this.success=true;
                     //window.location = '/acceuil';
                 }).catch(()=>{

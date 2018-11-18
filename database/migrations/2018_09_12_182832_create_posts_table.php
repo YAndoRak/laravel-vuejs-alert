@@ -19,8 +19,10 @@ class CreatePostsTable extends Migration
             $table->string('lieu');
             $table->string('commune');
             $table->string('date');
+            $table->boolean('poster');
+            $table->binary('image');
             $table->longText('description');
-            $table->integer('online');
+            $table->boolean('online');
             $table->timestamps();
         });
     }

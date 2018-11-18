@@ -14,11 +14,11 @@
 
             <div class="form-group">
                 <label for="titre">Sujet de votre declaration :</label>
-                <input type="text" class="form-control" name="titre" required v-model.lazy="articles.titre">
+                <input type="text" class="form-control" id="titre" name="titre" required v-model.lazy="articles.titre">
             </div>
             <div class="form-group">
                 <label for="lieu">Lieu de l'incident : </label>
-                <select class="browser-default custom-select mb-2" name="lieu" v-model.lazy="articles.lieu">
+                <select class="browser-default custom-select mb-2" id="lieu" name="lieu" v-model.lazy="articles.lieu">
                     <option value="" disabled>Choisissez une ville</option>
                     <option>Tana</option>
                     <option>Majunga</option>
@@ -28,7 +28,25 @@
             </div>
             <div class="form-group">
                 <label for="commune">La commune où l'incident s'est produite :</label>
-                <input type="text" class="form-control" name="commune" required v-model.lazy="articles.commune">
+                <input type="text" class="form-control" id="commune" name="commune" required v-model.lazy="articles.commune">
+            </div>
+            <div class="form-group">
+                <div class="custom-control custom-checkbox mt-2">
+                    <input type="checkbox" class="custom-control-input" id="poster" v-model="articles.poster" checked value="true">
+                    <label class="custom-control-label" for="poster"> Ajouter un poster :</label>
+                </div>
+                <div class="custom-control custom-checkbox mt-2">
+                    <picture-input v-if="articles.poster"
+                                   ref="pictureInput"
+                                   @change="onChange"
+                                   width="300"
+                                   height="90"
+                                   accept="image/jpeg,image/png, image/jpg"
+                                   size="10"
+                                   buttonClass="btn"
+                                   :customStrings="{upload: '<h1>uploading</h1>',drag: 'Choisir une image'}">
+                    </picture-input>
+                </div>
             </div>
             <!--Ici commence date -->
             <label>Date de decouverte de l'incident :</label>
@@ -46,7 +64,7 @@
 
             <div class="form-group">
                 <label for="description">Description :</label>
-                <froala :tag="'textarea'" :config="config" v-model.lazy="articles.description"></froala>
+                <froala :tag="'textarea'" :config="config" id="description" v-model.lazy="articles.description"></froala>
 
             </div>
             <div class="form-group">
@@ -63,9 +81,11 @@
 </template>
 <script>
     import Datepicker from 'vuejs-datepicker';
+    import PictureInput from 'vue-picture-input';
     export default {
         components: {
-            Datepicker
+            Datepicker,
+            PictureInput
         },
         data(){
             return {
@@ -125,6 +145,8 @@
                 },
                 articles:[],
                 success:false,
+                poster:true,
+                image:"",
                 props:{
                     calendarButton:Boolean
                 }
@@ -146,13 +168,26 @@
                     commune:this.articles.commune,
                     date:this.articles.date,//this.$moment(this.articles.date).format('MMMM Do YYYY')
                     description:this.articles.description,
-                    online:this.articles.online
+                    online:this.articles.online,
+                    poster:this.articles.poster,
+                    image:this.articles.poster ? this.articles.image : "No image"
                 }).then(()=>{
                     this.success=true;
                     //window.location = '/acceuil';
                 }).catch(()=>{
                     console.log('error')
                 })
+            },
+            onChange () {
+                console.log('New picture selected!')
+                if (poster='true'){
+                    if (this.$refs.pictureInput.file ) {
+                        console.log('Picture loaded.')
+                        this.articles.image=this.$refs.pictureInput.image
+                    } else {
+                        console.log('FileReader API not supported: use the <form>, Luke!')
+                    }
+                }
             }
         }
     }

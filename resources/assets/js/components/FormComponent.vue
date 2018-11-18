@@ -14,11 +14,11 @@
 
             <div class="form-group">
                 <label for="titre">Sujet de votre declaration :</label>
-                <input type="text" class="form-control" name="titre" placeholder="ex: mot de passe wifi trop facile" required v-model="titre">
+                <input type="text" class="form-control" name="titre" id="titre" placeholder="ex: mot de passe wifi trop facile" required v-model="titre">
             </div>
             <div class="form-group">
                 <label for="lieu">Lieu de l'incident : </label>
-                <select class="browser-default custom-select mb-2" name="lieu" v-model="lieu">
+                <select class="browser-default custom-select mb-2" id="lieu" name="lieu" v-model="lieu">
                     <option value="" disabled>Choisissez une ville</option>
                     <option>Tana</option>
                     <option>Majunga</option>
@@ -28,21 +28,38 @@
             </div>
             <div class="form-group">
                 <label for="commune">La commune où l'incident s'est produite :</label>
-                <input type="text" class="form-control" name="commune" placeholder="ex: Antanimena" required v-model="commune">
+                <input type="text" class="form-control" id="commune" name="commune" placeholder="ex: Antanimena" required v-model="commune">
+            </div>
+            <div class="form-group">
+                <div class="custom-control custom-checkbox mt-2">
+                    <input type="checkbox" class="custom-control-input" id="poster" v-model="poster" checked value="true">
+                    <label class="custom-control-label" for="poster"> Ajouter un poster :</label>
+                </div>
+                <div class="custom-control custom-checkbox mt-2">
+                    <picture-input v-if="poster"
+                                   ref="pictureInput"
+                                   @change="onChange"
+                                   width="300"
+                                   height="90"
+                                   accept="image/jpeg,image/png, image/jpg"
+                                   size="10"
+                                   buttonClass="btn"
+                                   :customStrings="{upload: '<h1>uploading</h1>',drag: 'Choisir une image'}">
+                    </picture-input>
+                </div>
             </div>
             <!--Ici commence date -->
             <label>Date de decouverte de l'incident :</label>
             <div class="input-group mb-3" >
-                <datepicker :bootstrap-styling="true" calendar-button='1' placeholder="ex: 17 Nov 2018" calendar-button-icon="fa fa-calendar" v-model="date">
+                <datepicker :bootstrap-styling="true" :calendar-button="true" placeholder="ex: 17 Nov 2018" calendar-button-icon="fa fa-calendar" v-model="date">
                 </datepicker>
             </div>
 
 
             <!-- Fin date -->
-
             <div class="form-group">
                 <label for="description">Description :</label>
-                <froala :tag="'textarea'" :config="config" v-model="description"></froala>
+                <froala :tag="'textarea'" :config="config" id="description" v-model="description"></froala>
 
             </div>
             <div class="form-group">
@@ -61,19 +78,22 @@
 
 <script>
     import Datepicker from 'vuejs-datepicker';
+    import PictureInput from 'vue-picture-input';
     export default {
         components: {
-            Datepicker
+            Datepicker,
+            PictureInput
         },
-        props: {
-            format: [String, Function],
-            placeholder: String,
-            calendarButtonIcon: String,
-            required: Boolean,
-            bootstrapStyling: Boolean,
-        },
+
         data(){
             return {
+                props: {
+                    placeholder: String,
+                    calendarButton:Boolean,
+                    calendarButtonIcon: String,
+                    required: Boolean,
+                    bootstrapStyling: Boolean,
+                },
                 config: {
                     placeholderText:"Veuillez decrir ici les details de l'incident",
                     height: 150,
@@ -132,7 +152,9 @@
                 date:"",
                 description:"",
                 online:1,
-                success:false
+                success:false,
+                poster:true,
+                image:""
 
             }
         },
@@ -144,14 +166,28 @@
                     commune:this.commune,
                     date:this.date,
                     description:this.description,
-                    online:this.online
-                }).then((response)=>{
+                    online:this.online,
+                    poster:this.poster,
+                    image:this.poster ? this.image : "No image"
+                }).then(()=>{
                     this.success=true;
-                    console.log('success')
                 }).catch(()=>{
                     console.log('error')
+
                 })
+            },
+            onChange () {
+                console.log('New picture selected!')
+                if (poster='true'){
+                    if (this.$refs.pictureInput.file ) {
+                        console.log('Picture loaded.')
+                        this.image=this.$refs.pictureInput.image
+                    } else {
+                        console.log('FileReader API not supported: use the <form>, Luke!')
+                    }
+                }
             }
+
         }
     }
 </script>

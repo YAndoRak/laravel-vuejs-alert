@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <h5>{{post.titre}}</h5>
                     </div>
-                    <img class="card-img-top" src="/imgs/img.jpeg" alt="Card image cap">
+                    <img class="card-img-top" :src="post.poster ? post.image : ''" alt="Card image cap" v-if="post.poster">
                     <div class="card-body">
                         <h5 class="card-title">{{post.titre}}</h5>
 
@@ -79,7 +79,6 @@
                 else{
                     this.plein=false
                 }
-                console.log('success')
             }).catch(()=>{
                 console.log('error')
             })

@@ -8,6 +8,14 @@
                 <p class="mb-0">Merci pour votre participation, pour retourner a la page d'acceuil <a href="/acceuil">Cliquer ici</a></p>
             </div>
         </div>
+        <div class="container mt-4" v-else-if="deleted">
+            <div class="alert alert-info" role="alert">
+                <h4 class="alert-heading">Success!</h4>
+                <p>Suppression reussie.</p>
+                <hr>
+                <p class="mb-0">Merci pour votre participation, pour retourner a la page d'acceuil <a href="/acceuil">Cliquer ici</a></p>
+            </div>
+        </div>
 
         <div class="formulaire" v-else>
             <h2 class="text-center">Signaler</h2>
@@ -75,6 +83,7 @@
             </div>
 
             <button class="btn btn-primary btn-block btn-lg" @click="envoyer">Je veux editer</button>
+            <button class="btn btn-danger btn-block btn-lg" @click="supprimer">Je veux supprimer le post</button>
         </div>
 
     </div>
@@ -145,6 +154,7 @@
                 },
                 articles:[],
                 success:false,
+                deleted:false,
                 poster:true,
                 image:"",
                 props:{
@@ -177,6 +187,10 @@
                 }).catch(()=>{
                     console.log('error')
                 })
+            },
+            supprimer(){
+                axios.delete('/api/post/edit/'+this.$route.params.id);
+                this.deleted=true
             },
             onChange () {
                 console.log('New picture selected!')

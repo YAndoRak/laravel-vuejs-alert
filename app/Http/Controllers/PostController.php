@@ -31,4 +31,11 @@ class PostController extends Controller
             return "le fichier n'existe plus";
         }
     }
+    public function delete_post($id){
+        if(Post::findOrFail($id)) {
+            Post::findOrFail($id)->delete();
+        }else{
+            return 'error';
+        }
+    }
 }

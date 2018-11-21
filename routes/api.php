@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::group(['middleware'=>['auth:api']], function(){
     Route::get('/post/{id}','AcceuilController@show');
+    Route::delete('/post/edit/{id}','PostController@delete_post');
     Route::put('/post/edit/{id}','PostController@update');
     Route::post('/edit/deleteImage','PostController@delete');
     Route::post('/upload_image', 'UploadController@UploadImage');

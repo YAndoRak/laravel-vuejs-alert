@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
+use Illuminate\Support\Facades\DB;
 class CreatePostsTable extends Migration
 {
     /**
@@ -20,11 +20,11 @@ class CreatePostsTable extends Migration
             $table->string('commune');
             $table->string('date');
             $table->boolean('poster');
-            $table->binary('image');
             $table->longText('description');
             $table->boolean('online');
             $table->timestamps();
         });
+        DB::statement("ALTER TABLE posts ADD image LONGBLOB AFTER commune");
     }
 
     /**

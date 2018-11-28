@@ -21,10 +21,17 @@ import article from './components/ArticleComponent.vue'
 import edition from './components/EditComponent.vue'
 import VueFroala from 'vue-froala-wysiwyg'
 import VueRouter from 'vue-router'
-import Vuemoment from 'vue-moment'
-Vue.use(Vuemoment)
 Vue.use(VueRouter)
 Vue.use(VueFroala)
+
+const moment = require('moment')
+require('moment/locale/fr')
+
+Vue.use(require('vue-moment'), {
+    moment
+})
+
+console.log(Vue.moment().locale())
 
 const routes = [
     {

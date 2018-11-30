@@ -151,7 +151,7 @@
                 commune:"",
                 date:"",
                 description:"",
-                online:1,
+                online:true,
                 success:false,
                 poster:true,
                 image:""
@@ -178,7 +178,7 @@
             },
             onChange () {
                 console.log('New picture selected!')
-                if (poster='true'){
+                if (this.poster){
                     if (this.$refs.pictureInput.file ) {
                         console.log('Picture loaded.')
                         this.image=this.$refs.pictureInput.image

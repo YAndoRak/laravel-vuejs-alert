@@ -194,7 +194,7 @@
             },
             onChange () {
                 console.log('New picture selected!')
-                if (poster='true'){
+                if (this.poster){
                     if (this.$refs.pictureInput.file ) {
                         console.log('Picture loaded.')
                         this.articles.image=this.$refs.pictureInput.image

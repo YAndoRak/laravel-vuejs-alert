@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
             $table->boolean('poster');
             $table->longText('description');
             $table->boolean('online');
+            $table->string('auteur');
             $table->timestamps();
         });
         DB::statement("ALTER TABLE posts ADD image LONGBLOB AFTER commune");

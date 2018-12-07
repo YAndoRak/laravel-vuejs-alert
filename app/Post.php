@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable=['titre', 'lieu', 'commune', 'date', 'poster', 'image', 'description', 'online'];
+    protected $fillable=['titre', 'lieu', 'commune', 'date', 'poster', 'image', 'description', 'online', 'auteur'];
     public function scopePublic($req){
         return $req->where('online', true);
     }

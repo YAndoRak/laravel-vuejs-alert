@@ -9,30 +9,26 @@
                     <img class="card-img-top" :src="post.poster ? post.image : ''" alt="Card image cap" v-if="post.poster">
                     <div class="card-body">
                         <h5 class="card-title">{{post.titre}}</h5>
-
-
                     </div>
-
                     <div  class="card-footer border-info collapse">
                         <p class="card-text"></p>
-                        <froalaView v-model="post.description"></froalaView>
+                        <ul>
+                            <li>Auteur : {{post.auteur}}</li>
+                            <li>Date de publication : {{post.created_at}}</li>
+                            <li>Derniere date de modification : {{post.updated_at}}</li>
+                        </ul>
                         <a :href="'/post/'+post.id">En savoir plus</a>
-
                     </div>
-
-
                 </div>
                 <div class="card-footer bg-transparent border-success">
 
                     <p class="card-text">
                         <small class="text-muted">
-                            {{post.date |moment("dddd, MMMM Do YYYY")}}
-
+                            {{post.date |moment("dddd, Do MMMM YYYY")}}
                         </small>
                         <a :href="'/post/'+post.id">En savoir plus</a>
                         <a :href="'/post/edit/'+post.id">Editer ce post</a>
                     </p>
-
                     <button class="btn btn-primary btn-group-sm expand">Plus</button>
                 </div>
             </div>
@@ -50,6 +46,7 @@
 
 <script>
     export default {
+
         data(){
             return {
                 posts:[],

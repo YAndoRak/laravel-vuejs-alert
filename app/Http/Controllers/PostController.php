@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\Storage;
@@ -12,8 +13,19 @@ class PostController extends Controller
     public function form(){
         return view('pages.form.formulaire');
     }
-    public function poster(Request $request){
-        Post::create($request->all());
+    public function poster(Request $request,Guard $auth){
+        $post=[
+            'titre' => $request->input('titre'),
+            'lieu' => $request->input('lieu'),
+            'commune' => $request->input('commune'),
+            'date' => $request->input('date'),
+            'description' => $request->input('description'),
+            'online' => $request->input('online'),
+            'poster' => $request->input('poster'),
+            'image' => $request->input('image'),
+            'auteur' => $auth->user()->name
+        ];
+        Post::create($post);
     }
     public function edit(){
         return view('pages.article');

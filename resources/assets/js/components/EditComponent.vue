@@ -83,7 +83,7 @@
             </div>
 
             <button class="btn btn-primary btn-block btn-lg" @click="envoyer">Je veux editer</button>
-            <button class="btn btn-danger btn-block btn-lg" @click="supprimer">Je veux supprimer le post</button>
+            <button class="btn btn-danger btn-block btn-lg" @click="supprimer" v-if="user.name===articles.auteur">Je veux supprimer le post</button>
         </div>
 
     </div>
@@ -157,13 +157,18 @@
                 deleted:false,
                 poster:true,
                 image:"",
+                user:"",
                 props:{
-                    calendarButton:Boolean
+                    calendarButton:Boolean,
                 }
             }
         },
         mounted(){
-
+            axios.get('/api/user').then((response)=>{
+                if(response.data!=''){
+                    this.user=response.data
+                }
+            })
             axios.get('/api/post/'+this.$route.params.id).then((response)=>{
                 if(response.data!=''){
                     this.articles=response.data
@@ -189,8 +194,12 @@
                 })
             },
             supprimer(){
-                axios.delete('/api/post/edit/'+this.$route.params.id);
-                this.deleted=true
+                axios.delete('/api/post/edit/'+this.$route.params.id)
+                    .then(()=>{this.deleted=true}).catch(()=>{
+                        alert("Vous n'etes pas authoriser a supprimer cette article")
+                })
+
+
             },
             onChange () {
                 console.log('New picture selected!')

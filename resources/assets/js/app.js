@@ -18,6 +18,7 @@ require('froala-editor/css/froala_style.min.css')
 window.Vue = require('vue');
 
 import article from './components/ArticleComponent.vue'
+import account from './components/AccountComponent.vue'
 import edition from './components/EditComponent.vue'
 import VueFroala from 'vue-froala-wysiwyg'
 import VueRouter from 'vue-router'
@@ -57,6 +58,7 @@ const router = new VueRouter({
  */
 Vue.component('form-component', require('./components/FormComponent.vue'));
 Vue.component('acceuil-component', require('./components/AcceuilComponent.vue'));
+Vue.component('account-component', require('./components/AccountComponent.vue'));
 
 const app = new Vue({
     el: '#Vueapp',

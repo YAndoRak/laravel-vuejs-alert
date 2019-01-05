@@ -19,6 +19,7 @@ Route::get('form', 'PostController@form');
 Route::post('form', 'PostController@poster');
 
 Route::get('api', 'AcceuilController@api');
+Route::get('/account', 'UserController@index')->name('account');
 
 Auth::routes();
 

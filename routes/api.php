@@ -24,4 +24,5 @@ Route::group(['middleware'=>['auth:api']], function(){
     Route::post('/upload_image', 'UploadController@UploadImage');
     Route::post('/upload_video', 'UploadController@UploadVideo');
     Route::post('/upload_file', 'UploadController@UploadFile');
+    Route::patch('/account/update', 'UserController@updateProfil');
 });

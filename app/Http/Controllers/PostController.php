@@ -23,7 +23,7 @@ class PostController extends Controller
             'online' => $request->input('online'),
             'poster' => $request->input('poster'),
             'image' => $request->input('image'),
-            'auteur' => $auth->user()->name
+            'user_id' => $auth->user()->id
         ];
         Post::create($post);
     }
@@ -44,10 +44,10 @@ class PostController extends Controller
         }
     }
     public function delete_post($id){
-        if(Post::findOrFail($id)) {
+        if(Post::auteur()->findOrFail($id)) {
             Post::findOrFail($id)->delete();
         }else{
-            return 'error';
+           return "Vous n'etes pas authoriser a effectuer cette operation";
         }
     }
 }

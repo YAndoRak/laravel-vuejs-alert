@@ -12,15 +12,23 @@ class UserController extends Controller
     }
     public function updateProfil(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email',
-        ]);
+        if($request->name!=""){
+            $this->validate($request, [
+                'name' => 'required'
+            ]);
+            $request->user()->forceFill([
+                'name' => $request->name
+            ])->save();
+        }
+        if($request->email!=""){
+            $this->validate($request, [
+                'email' => 'email|unique:users'
+            ]);
+            $request->user()->forceFill([
+                'email' => $request->email
+            ])->save();
+        }
 
-        $request->user()->forceFill([
-            'name' => $request->name,
-            'email' => $request->email
-        ])->save();
         return "Update successfull";
     }
 }

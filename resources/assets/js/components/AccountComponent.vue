@@ -6,10 +6,10 @@
                     <div class="card-header">Account</div>
                     <div class="card-body">
                         <div class="mb-2">{{user.id}}</div>
-                        <div v-if="name" class="mb-2"> {{user.name}}<a @click="name=false"> Edit</a></div>
-                        <div v-else class="mb-2"> <input type="text" v-model="user.name" /><button @click="confirmName()">Confirmer</button></div>
-                        <div v-if="email" class="mb-2"> {{user.email}}<a @click="email=false"> Edit</a></div>
-                        <div v-else class="mb-2"> <input type="text" v-model="user.email" /><button @click="confirmEmail()">Confirmer</button></div>
+                        <div v-if="name" class="mb-2"> {{getUser.name}}<a @click="name=false"> Edit</a></div>
+                        <div v-else class="mb-2"> <input type="text" v-model.lazy="getUser.name" /><button @click="confirmName()">Confirmer</button></div>
+                        <div v-if="email" class="mb-2"> {{getUser.email}}<a @click="email=false"> Edit</a></div>
+                        <div v-else class="mb-2"> <input type="text" v-model.lazy="getUser.email" /><button @click="confirmEmail()">Confirmer</button></div>
                     </div>
                 </div>
                 <button class="btn btn-primary btn-block btn-lg mt-4" @click="save()">Sauvegarder</button>
@@ -21,23 +21,29 @@
     export default {
         data(){
             return{
-                user:[],
+                getUser:[],
+                user:{
+                    name:'',
+                    email:''
+                },
                 name:true,
                 email:true
             }
         },
         mounted(){
             axios.get('/api/user').then((response)=>{
-                this.user=response.data
+                this.getUser=response.data
             }).catch(()=>{
                 console.log('error')
             })
         },
         methods:{
             confirmEmail(){
+                this.user.email=this.getUser.email
                 this.email=true
             },
             confirmName(){
+                this.user.name=this.getUser.name
                 this.name=true
             },
             save(){

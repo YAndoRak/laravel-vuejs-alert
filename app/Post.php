@@ -12,7 +12,7 @@ class Post extends Model
         return $req->where('online', true);
     }
     public function scopeAuteur($req){
-        return $req->where('auteur', Auth::user()->name);
+        return $req->where('user_id', Auth::user()->id);
     }
     public function user()
     {

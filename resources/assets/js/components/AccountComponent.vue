@@ -25,6 +25,7 @@
                     </div>
                 </div>
                 <button class="btn btn-primary btn-block btn-lg mt-4" @click="save()" v-bind:disabled="alert">Sauvegarder</button>
+                <a class="btn btn-secondary btn-block btn-lg" href="/acceuil">Fermer</a>
             </div>
         </div>
     </div>

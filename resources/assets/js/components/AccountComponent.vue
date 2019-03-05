@@ -2,9 +2,13 @@
     <div class="container">
         <div class="row justify-content-left">
             <div class="col-md-8">
-                <div v-if="success" class="alert alert-success" role="alert">
+                <div v-if="success" class="alert alert-success alert-dismissible fade show" role="alert">
                     Modification reussie.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+
                 <div class="card card-default">
                     <div class="card-header">Account</div>
                     <div class="card-body">

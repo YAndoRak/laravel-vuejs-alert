@@ -83,7 +83,7 @@
             </div>
 
             <button class="btn btn-primary btn-block btn-lg" @click="envoyer">Je veux editer</button>
-            <button class="btn btn-danger btn-block btn-lg" @click="supprimer" v-if="user.name===articles.auteur">Je veux supprimer le post</button>
+            <button class="btn btn-danger btn-block btn-lg" @click="supprimer" v-if="user.id===articles.user_id">Je veux supprimer le post</button>
         </div>
 
     </div>

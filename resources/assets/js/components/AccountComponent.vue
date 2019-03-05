@@ -2,6 +2,9 @@
     <div class="container">
         <div class="row justify-content-left">
             <div class="col-md-8">
+                <div v-if="success" class="alert alert-success" role="alert">
+                    Modification reussie.
+                </div>
                 <div class="card card-default">
                     <div class="card-header">Account</div>
                     <div class="card-body">
@@ -38,7 +41,8 @@
                 },
                 name:true,
                 email:true,
-                alert:false
+                alert:false,
+                success:false
             }
         },
         mounted(){
@@ -70,11 +74,12 @@
                     email:this.user.email
                 })
                     .then(()=>{
-                        console.log('Success')
+                        this.success=true
                     })
                     .catch(()=>{
                         console.log('Error')
                     })
+
             }
         }
     }
